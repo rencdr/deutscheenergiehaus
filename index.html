@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deutsche Energiehaus — Intelligente Energielösungen</title>
+<style>
+  :root{
+    --navy:#0B2E4A; --ink:#0A2540; --blue:#0090FF; --green:#00C97B;
+    --muted:#5B7089; --light:#F4F8FC; --line:#E4ECF4;
+    --grad:linear-gradient(120deg,#0090FF,#00C97B);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.6}
+  a{text-decoration:none;color:inherit}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+
+  /* NAV */
+  nav{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:50}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{height:44px;width:auto}
+  .brand-name{font-size:15px;letter-spacing:.5px}
+  .brand-name b{display:block;font-size:17px;color:var(--navy)}
+  .brand-name span{color:var(--green);font-size:11px;letter-spacing:4px;text-transform:lowercase}
+  .menu{display:flex;gap:32px;font-size:15px;color:var(--muted)}
+  .menu a:hover{color:var(--blue)}
+  .btn{display:inline-block;padding:12px 26px;border-radius:10px;font-weight:600;font-size:15px;transition:.2s}
+  .btn-grad{background:var(--grad);color:#fff}
+  .btn-grad:hover{opacity:.9;transform:translateY(-1px)}
+  .btn-ghost{border:1.5px solid var(--line);color:var(--navy)}
+  .btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
+
+  /* HERO */
+  .hero{padding:110px 0 90px;background:
+    radial-gradient(600px 300px at 85% 10%,rgba(0,201,123,.08),transparent),
+    radial-gradient(700px 350px at 10% 90%,rgba(0,144,255,.07),transparent)}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center}
+  .tag{display:inline-block;font-size:12px;letter-spacing:3px;font-weight:600;color:var(--blue);background:rgba(0,144,255,.08);padding:7px 16px;border-radius:99px;margin-bottom:22px}
+  h1{font-size:52px;line-height:1.12;font-weight:700;letter-spacing:-1px}
+  h1 .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{margin:22px 0 34px;font-size:18px;color:var(--muted);max-width:520px}
+  .hero-cta{display:flex;gap:14px}
+
+  /* hero visual: energy dashboard card */
+  .dash{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px;box-shadow:0 24px 60px rgba(10,37,64,.10)}
+  .dash h4{font-size:13px;letter-spacing:2px;color:var(--muted);font-weight:600;margin-bottom:18px}
+  .kpis{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+  .kpi{background:var(--light);border-radius:12px;padding:14px 16px}
+  .kpi b{font-size:24px;color:var(--navy)}
+  .kpi span{display:block;font-size:12px;color:var(--muted)}
+  .kpi .up{color:var(--green);font-weight:600}
+
+  /* SECTIONS */
+  section{padding:90px 0}
+  .sec-tag{font-size:12px;letter-spacing:3px;font-weight:600;color:var(--green)}
+  h2{font-size:36px;font-weight:700;letter-spacing:-.5px;margin:10px 0 14px}
+  .sec-sub{color:var(--muted);max-width:640px;font-size:17px}
+
+  /* STATS BAR */
+  .stats{background:var(--navy);color:#fff;padding:54px 0}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+  .stats b{font-size:38px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stats span{display:block;font-size:14px;color:#9FB3C8;margin-top:6px}
+
+  /* SOLUTIONS */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:48px}
+  .card{border:1px solid var(--line);border-radius:18px;padding:34px 28px;transition:.25s}
+  .card:hover{box-shadow:0 18px 44px rgba(10,37,64,.10);transform:translateY(-4px);border-color:transparent}
+  .card .ico{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:22px;background:var(--light)}
+  .card h3{font-size:20px;margin-bottom:10px}
+  .card p{color:var(--muted);font-size:15px}
+  .card a{display:inline-block;margin-top:16px;color:var(--blue);font-weight:600;font-size:14px}
+
+  /* HOW IT WORKS */
+  .how{background:var(--light)}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:48px}
+  .step{background:#fff;border-radius:18px;padding:32px 28px;border:1px solid var(--line)}
+  .step .num{font-size:14px;font-weight:700;color:#fff;background:var(--grad);width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+  .step h3{font-size:18px;margin-bottom:8px}
+  .step p{color:var(--muted);font-size:15px}
+
+  /* CTA */
+  .cta{background:linear-gradient(120deg,#0B2E4A 0%,#0A3C66 100%);border-radius:24px;padding:70px 60px;text-align:center;color:#fff}
+  .cta h2{color:#fff}
+  .cta p{color:#9FB3C8;max-width:520px;margin:0 auto 32px}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--line);padding:54px 0 40px;color:var(--muted);font-size:14px}
+  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+  .foot-grid h5{color:var(--navy);font-size:14px;margin-bottom:14px}
+  .foot-grid a{display:block;margin-bottom:8px}
+  .foot-grid a:hover{color:var(--blue)}
+  .copy{border-top:1px solid var(--line);padding-top:22px;display:flex;justify-content:space-between}
+
+  @media(max-width:900px){
+    .hero-grid,.cards,.steps{grid-template-columns:1fr}
+    .stats-grid,.foot-grid{grid-template-columns:1fr 1fr}
+    h1{font-size:38px}
+    .menu{display:none}
+    .hero{padding:70px 0}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="wrap nav-in">
+    <a href="#" class="brand">
+      <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg" aria-label="Deutsche Energiehaus">
+        <path d="M5 44 L50 6 L95 44" fill="none" stroke="#00C97B" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="50" cy="84" r="25" fill="none" stroke="#0090FF" stroke-width="9"/>
+        <line x1="50" y1="50" x2="50" y2="76" stroke="#0090FF" stroke-width="9" stroke-linecap="round"/>
+      </svg>
+      <span class="brand-name"><span>deutsche</span><b>energiehaus</b></span>
+    </a>
+    <div class="menu">
+      <a href="#loesungen">Lösungen</a>
+      <a href="#ablauf">So funktioniert's</a>
+      <a href="#ueber-uns">Über uns</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+    <a href="#kontakt" class="btn btn-grad">Kostenlose Analyse</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="tag">KI-GESTÜTZTE ENERGIEOPTIMIERUNG</span>
+      <h1>Lassen Sie <span class="grad">künstliche Intelligenz</span> Ihre Energie managen</h1>
+      <p>Deutsche Energiehaus senkt Ihre Energiekosten um bis zu 40 % — mit KI-gestützter Optimierung, Batteriespeichern und Photovoltaik aus einer Hand.</p>
+      <div class="hero-cta">
+        <a href="#kontakt" class="btn btn-grad">Energieanalyse starten</a>
+        <a href="#loesungen" class="btn btn-ghost">Lösungen entdecken</a>
+      </div>
+    </div>
+    <div class="dash">
+      <h4>LIVE-ENERGIEMONITOR</h4>
+      <div class="kpis">
+        <div class="kpi"><b>−38 %</b><span>Energiekosten</span></div>
+        <div class="kpi"><b>412 kWh</b><span>Heutige PV-Erzeugung</span></div>
+        <div class="kpi"><b>86 %</b><span>Speicher-Ladestand</span></div>
+        <div class="kpi"><b class="up">▲ 12,4 t</b><span>Vermiedenes CO₂ / Monat</span></div>
+      </div>
+      <svg viewBox="0 0 400 90" width="100%">
+        <defs><linearGradient id="w" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#0090FF"/><stop offset="1" stop-color="#00C97B"/>
+        </linearGradient></defs>
+        <path d="M0 70 C40 66 60 40 95 44 C130 48 150 20 190 26 C230 32 250 58 290 50 C330 42 355 24 400 20"
+              fill="none" stroke="url(#w)" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="400" cy="20" r="6" fill="#00C97B"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<!-- ===== SOLUTIONS ===== -->
+<section id="loesungen">
+  <div class="wrap">
+    <span class="sec-tag">UNSERE LÖSUNGEN</span>
+    <h2>Drei Technologien, ein intelligentes System</h2>
+    <p class="sec-sub">Erzeugen, speichern, optimieren. Unsere drei Lösungen vereinen sich auf einer Plattform zur Energieintelligenz Ihres Unternehmens.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="ico">
+          <svg width="30" height="30" viewBox="0 0 30 30"><circle cx="15" cy="15" r="6" fill="none" stroke="#0090FF" stroke-width="2.4"/><circle cx="15" cy="3" r="2.4" fill="#00C97B"/><circle cx="27" cy="15" r="2.4" fill="#00C97B"/><circle cx="15" cy="27" r="2.4" fill="#00C97B"/><circle cx="3" cy="15" r="2.4" fill="#00C97B"/><line x1="15" y1="9" x2="15" y2="5.4" stroke="#0090FF" stroke-width="2"/><line x1="21" y1="15" x2="24.6" y2="15" stroke="#0090FF" stroke-width="2"/><line x1="15" y1="21" x2="15" y2="24.6" stroke="#0090FF" stroke-width="2"/><line x1="9" y1="15" x2="5.4" y2="15" stroke="#0090FF" stroke-width="2"/></svg>
+        </div>
+        <h3>KI-Energieoptimierung</h3>
+        <p>Unsere KI analysiert Verbrauch, Erzeugung und Strompreise in Echtzeit und steuert Ihre Energieflüsse sekundenschnell in das effizienteste Szenario.</p>
+      </div>
+      <div class="card">
+        <div class="ico">
+          <svg width="30" height="30" viewBox="0 0 30 30"><rect x="4" y="8" width="20" height="16" rx="3" fill="none" stroke="#0090FF" stroke-width="2.4"/><line x1="11" y1="4" x2="11" y2="8" stroke="#0090FF" stroke-width="2.4"/><line x1="19" y1="4" x2="19" y2="8" stroke="#0090FF" stroke-width="2.4"/><path d="M16 11 L12 16.5 L15 16.5 L13.5 21" fill="none" stroke="#00C97B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Batteriespeicher</h3>
+        <p>Günstig speichern, teuer vermeiden: Skalierbare Speichersysteme für Lastspitzenkappung, Notstrom und maximalen Eigenverbrauch.</p>
+      </div>
+      <div class="card">
+        <div class="ico">
+          <svg width="30" height="30" viewBox="0 0 30 30"><path d="M4 24 L26 24 L22 10 L8 10 Z" fill="none" stroke="#0090FF" stroke-width="2.4" stroke-linejoin="round"/><line x1="15" y1="10" x2="15" y2="24" stroke="#0090FF" stroke-width="1.6"/><line x1="6.8" y1="17" x2="23.2" y2="17" stroke="#0090FF" stroke-width="1.6"/><circle cx="15" cy="4.5" r="2.6" fill="#00C97B"/></svg>
+        </div>
+        <h3>Photovoltaik (PV)</h3>
+        <p>Planung, Installation und KI-gestützte Ertragsprognose für Dach- und Freiflächenanlagen — schlüsselfertig aus einer Hand.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW ===== -->
+<section class="how" id="ablauf">
+  <div class="wrap">
+    <span class="sec-tag">ABLAUF</span>
+    <h2>So funktioniert's</h2>
+    <p class="sec-sub">In drei Schritten zu kontrollierten Energiekosten.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Analyse</h3>
+        <p>Wir erstellen kostenlos Ihr Energieprofil und zeigen Ihr Einsparpotenzial transparent auf.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Installation</h3>
+        <p>PV, Speicher und intelligente Messtechnik werden schlüsselfertig installiert und mit unserer Plattform verbunden.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Optimierung</h3>
+        <p>Die KI arbeitet rund um die Uhr: Erzeugung, Speicherung und Verbrauch laufen automatisch im günstigsten und saubersten Szenario.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="ueber-uns">
+  <div class="wrap">
+    <span class="sec-tag">ÜBER UNS</span>
+    <h2>Wir bauen die Energiezukunft — schon heute</h2>
+    <p class="sec-sub">Deutsche Energiehaus ist ein Energie-Technologieunternehmen, das die Energieeffizienz von Unternehmen steigert. Wir verbinden deutsche Ingenieurskunst mit künstlicher Intelligenz und bieten unseren Kunden messbare Einsparungen, Energieunabhängigkeit und einen konkreten Weg zu Netto-Null.</p>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section id="kontakt" style="padding-top:0">
+  <div class="wrap">
+    <div class="cta">
+      <h2>Entdecken Sie Ihr Einsparpotenzial</h2>
+      <p>In einer kostenlosen 15-minütigen Erstanalyse erstellen wir den Energie-Check Ihres Standorts. Unverbindlich und ohne Überraschungen.</p>
+      <a class="btn btn-grad" href="mailto:info@deutsche-energiehaus.de">Kostenlose Analyse anfragen</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand" style="margin-bottom:14px">
+          <svg viewBox="0 0 100 120" width="34" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 44 L50 6 L95 44" fill="none" stroke="#00C97B" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="50" cy="84" r="25" fill="none" stroke="#0090FF" stroke-width="9"/>
+            <line x1="50" y1="50" x2="50" y2="76" stroke="#0090FF" stroke-width="9" stroke-linecap="round"/>
+          </svg>
+          <span class="brand-name"><b style="font-size:15px">deutsche energiehaus</b></span>
+        </div>
+        <p>Intelligente Energieoptimierung, Batteriespeicher und Photovoltaik-Lösungen.</p>
+      </div>
+      <div>
+        <h5>Lösungen</h5>
+        <a href="#loesungen">KI-Optimierung</a>
+        <a href="#loesungen">Batteriespeicher</a>
+        <a href="#loesungen">Photovoltaik</a>
+      </div>
+      <div>
+        <h5>Unternehmen</h5>
+        <a href="#ueber-uns">Über uns</a>
+      </div>
+      <div>
+        <h5>Kontakt</h5>
+        <span style="display:block;margin-bottom:8px">Otto-Hahn-Str. 18<br>71069 Sindelfingen</span>
+        <a href="mailto:info@deutsche-energiehaus.de">info@deutsche-energiehaus.de</a>
+      </div>
+    </div>
+    <div class="copy">
+      <span>© 2026 Deutsche Energiehaus GmbH · Otto-Hahn-Str. 18, 71069 Sindelfingen</span>
+      <span>Impressum · Datenschutz · Cookies</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
